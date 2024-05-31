@@ -31,5 +31,6 @@ def pauli_str(dim):
         return result
     return sorted(result, key=lambda x: abs(x[1]), reverse=True)[0:200]
 
+print('Cached values:', list(pauli_str.cache.keys()))
 dim = int(input('Qubits: '))
 print(pauli_str(dim))
