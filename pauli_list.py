@@ -27,7 +27,7 @@ def pauli_str(dim):
     A = -np.array(linalg.sqrtm(A))
     c = SparsePauliOp.from_operator(A)
     result = [(str(c.paulis[i]), c.coeffs[i].real) for i in range(len(c))]
-    if 200 > len(result):
+    if len(result) <= 200:
         return result
     return sorted(result, key=lambda x: abs(x[1]), reverse=True)[0:200]
 
