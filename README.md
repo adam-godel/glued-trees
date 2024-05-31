@@ -51,8 +51,8 @@ This project is currently under active development. I will be consistently worki
 ### To-Do
 - [X] Create an initial working version of the algorithm
 - [X] Write the repository description in detail
-- [ ] Write a more efficient Pauli decomposition function from scratch (eschewing insignificant Pauli strings)
-- [ ] Write large cropped Pauli strings to a file to be used as a dictionary for memoization
+- [X] Rewrite Pauli decomposition function to be more efficient
+- [X] Write large cropped Pauli lists to a file to be used as a dictionary for memoization
 - [ ] Investigate other optimizations to both minimize the circuit depth and make executions run faster
 - [ ] Run and graph results for the higher range of simulatable circuits (greater than 10 qubits)
 - [ ] Run and compare quantum hardware results with simulatable results at this range
