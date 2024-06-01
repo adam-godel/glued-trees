@@ -37,7 +37,7 @@ We can then observe that the following relation is formed:
 \ddot{\vec{z}}(t) + i\sqrt{\mathbf{A}}\dot{\vec{z}}(t) &= i\sqrt{\mathbf{A}}\big(\dot{\vec{z}}(t)+i\sqrt{\mathbf{A}}\vec{z}(t)\big)
 \end{aligned}
 ```
-where $\vec{z}(t)$ represents the vector of position states of size $2n$ for each oscillator. This is equivalent to Schrödinger's equation induced by the Hamiltonian $-\sqrt{\mathbf{A}}$. Therefore, this system of oscillators can be modeled by the exponentiation $\exp(-iHt)$ where $H=-\sqrt{\mathbf{A}}$. The challenge then becomes simulating this exponentiation efficiently on a quantum computer for large versions of the matrix $\mathbf{A}$.
+where $\vec{z}(t)$ represents the vector of size $2n$ of position states for each oscillator. This is equivalent to Schrödinger's equation induced by the Hamiltonian $-\sqrt{\mathbf{A}}$. Therefore, this system of oscillators can be modeled by the exponentiation $\exp(-iHt)$ where $H=-\sqrt{\mathbf{A}}$. The challenge then becomes simulating this exponentiation efficiently on a quantum computer for large versions of the matrix $\mathbf{A}$.
 
 ## Creating a Quantum Circuit
 I am working with [Classiq](https://github.com/Classiq) to create a quantum circuit implementation of the glued trees problem using their Python software development kit. One of the biggest advantages of using Classiq for this task is that their functions can be applied to an arbitrary number of qubits—in other words, you can create a Python function that takes in the size of the glued trees system as a parameter without needing to fundamentally change the code to model systems of different sizes. 
