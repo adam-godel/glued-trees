@@ -1,3 +1,10 @@
+"""
+This Python script uses Pauli decomposition, in particular the SparsePauliOp.from_operator function
+from Qiskit, to generate a Pauli list of size no more than 200 for a given number of qubits defining
+the size of the Hamiltonian -sqrt(A). The Pauli list generated is then added to the cache where it 
+will be drawn from in the future.
+"""
+
 from functools import wraps
 from qiskit.quantum_info import SparsePauliOp
 from scipy import linalg
