@@ -11,6 +11,25 @@ from scipy import linalg
 import numpy as np
 import pickle
 
+def crop_pauli_list(pauli, size):
+    if len(pauli) <= size:
+        return pauli
+    result = []
+    idx = 0
+    while len(result) < round(size*0.6):
+        for i in range(len(pauli[0][0])-1, -1, -1):
+            for k in pauli:
+                if k[0][i] == 'IXYZ'[idx%4] and k not in result:
+                    result.append(k)
+                    break
+            idx += 1
+    for i in pauli:
+        if len(result) >= size:
+            break
+        if i not in result:
+            result.append(i)
+    return result
+
 def cache(func):
     func.cache = pickle.load(open('pauli_list.cache', 'rb'))
     @wraps(func)
@@ -34,9 +53,7 @@ def pauli_str(dim):
     A = -np.array(linalg.sqrtm(A))
     c = SparsePauliOp.from_operator(A)
     result = [(str(c.paulis[i]), c.coeffs[i].real) for i in range(len(c))]
-    if len(result) <= 200:
-        return result
-    return sorted(result, key=lambda x: abs(x[1]), reverse=True)[0:200]
+    return crop_pauli_list(sorted(result, key=lambda x: abs(x[1]), reverse=True), 200)
 
 print('Cached values:', list(pauli_str.cache.keys()))
 dim = int(input('Qubits: '))

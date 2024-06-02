@@ -23,7 +23,20 @@ def cache(func):
 @cache
 def pauli_str(dim):
     cache = pickle.load(open('pauli_list.cache', 'rb'))
-    return [(x[0].rjust(dim, 'I'), x[1]) for x in cache[max(cache)]]
+    max_cache = cache[max(cache)]
+    result = []
+    for i in max_cache:
+        idx, length, temp = 0, 1, 1
+        for j in range(1, len(i[0])):
+            if j[0][i] == j[0][i-1]:
+                temp += 1
+            else:
+                if length > temp:
+                    length = temp
+                    idx = j-length
+                temp = 1
+        result.append((max_cache[0][:idx]+max_cache[0][idx]*(dim-len(max_cache[0]))+max_cache[0][idx:], max_cache[1]))
+    return result
 
 print('Cached values:', list(pauli_str.cache.keys()))
 dim = int(input('Qubits: '))
