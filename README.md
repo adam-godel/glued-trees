@@ -57,8 +57,8 @@ The second algorithm can be found in the [`approximate_pauli_list.py`](https://g
 The following graphs show the proportion of shots on the Classiq Aer simulator for the 8 highest possible bitstrings for 10 qubits ($n=512$) and 20 qubits ($n=524288$) respectively. As a reminder, the expected behavior is a spike for most of these values around $t \approx 2n$, and you can clearly see a large spike on both of the graphs.
 
 <p align="center">
-<img src="graphs/10_qubits_simulator.png" height="340">
-<img src="graphs/20_qubits_simulator.png" height="340">
+<img src="graphs/10_qubits_simulator.png" height="320">
+<img src="graphs/20_qubits_simulator.png" height="320">
 </p>
 
 I am planning to run the algorithm for larger qubit sizes on quantum hardware and present those results in the next several weeks.
