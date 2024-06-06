@@ -1,5 +1,5 @@
 # Glued Trees
-This repository contains the code for the latest version of a quantum circuit implementation for the glued trees algorithm. You can view the current iteration of the algorithm in the Jupyter notebook attached. **The code is mostly complete and has been tested on a simulator, but has not yet been tested on quantum hardware.** I plan to perform significant data analysis on real quantum hardware over the coming weeks.
+This repository contains the code for the latest version of a quantum circuit implementation for the glued trees algorithm. You can view the current iteration of the algorithm in the Jupyter notebook attached. **The code is mostly complete and has been tested on a simulator, but has not yet been tested on quantum hardware.** I plan to perform significant data analysis on actual quantum hardware over the coming weeks. I also hope to create a web resource in the near future that shows why this problem is inefficient to solve classically and why a quantum computer can solve it more efficiently.
 
 I began working on this project as part of [QRISE 2024](https://github.com/adam-godel/qrise2024-classiq-challenge) for [Classiq](https://github.com/Classiq). I was selected as a winner of QRISE and the research exchange has since ended, but I am still working with Classiq to greatly improve the algorithm with the goal of running as large of an implementation as possible on real quantum hardware. If you would like to learn more about me, feel free to access my website at [adamgodel.me](https://adamgodel.me/). You can also send me an email at agodel@bu.edu.
 
@@ -53,8 +53,20 @@ The first algorithm can be found in the [`generate_pauli_list.py`](https://githu
 
 The second algorithm can be found in the [`approximate_pauli_list.py`](https://github.com/adam-godel/glued-trees/blob/main/approximate_pauli_list.py) script. It simply takes the current largest Pauli list in the cache file and pads it with the first character until the desired qubit size is reached. This approximation method is generally effective since most significant Pauli strings for the matrix begin with a long substring of the same character. Adding that same character and keeping the coefficient generally follows the trend present when comparing generated Pauli strings for different qubit sizes to each other.
 
+## Results
+The following graphs show the proportion of shots on the Classiq Aer simulator for the 8 highest possible bitstrings for 10 qubits ($n=512$) and 20 qubits ($n=524288$) respectively. As a reminder, the expected behavior is a spike for most of these values around $t \approx 2n$, and you can clearly see a large spike on both of the graphs.
+
+<p align="center">
+<img src="graphs/10_qubits_simulator.png" height="390">
+<img src="graphs/20_qubits_simulator.png" height="390">
+</p>
+
+I am planning to run the algorithm for larger qubit sizes on quantum hardware and present those results in the next several weeks.
+
+All of the graphs I executed can be found in the [`graphs`](https://github.com/adam-godel/glued-trees/tree/main/graphs) folder, and the JSON files of the execution jobs from Classiq can be found in the [`results`](https://github.com/adam-godel/glued-trees/tree/main/results) folder.
+
 ## Future Goals
-This project is currently under active development. I will be consistently working on this project over the coming weeks to optimize the algorithm with the hope of ultimately running it on state of the art quantum hardware for circuits too high to run on a simulator, comprised of at least 30 qubits. You can view the current to-do list regarding the project below.
+This project is currently under active development. I will be consistently working on this project over the coming weeks to optimize the algorithm with the hope of ultimately running it on state of the art quantum hardware for qubit sizes too large to run on a simulator. You can view the current to-do list regarding the project below.
 ### To-Do
 - [X] Create an initial working version of the algorithm
 - [X] Write the repository description in detail
