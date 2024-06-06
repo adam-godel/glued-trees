@@ -12,7 +12,7 @@ from functools import wraps
 from qiskit.quantum_info import SparsePauliOp
 from scipy import linalg
 import numpy as np
-import pickle
+import json
 
 def crop_pauli_list(pauli, size):
     if len(pauli) <= size:
@@ -34,13 +34,13 @@ def crop_pauli_list(pauli, size):
     return result
 
 def cache(func):
-    func.cache = pickle.load(open('pauli_list.cache', 'rb'))
+    func.cache = json.load(open('pauli_cache.json', 'r'))
     @wraps(func)
     def wrapper(dim):
         if dim in func.cache:
             return func.cache[dim]
         func.cache[dim] = func(dim)
-        pickle.dump(func.cache, open('pauli_list.cache', 'wb'))
+        json.dump(func.cache, open('pauli_cache.json', 'w'))
         return func.cache[dim]
     return wrapper
 
