@@ -5,7 +5,7 @@ I began working on this project as part of [QRISE 2024](https://github.com/adam-
 
 This README file describes the glued trees problem and my approach in detail with a to-do list at the end describing my near-term goals for the project as they currently stand. 
 
-**The website directory will contain the code for a web resource introducing the project, but it is currently unfinished and under active development.**
+**The [`website`](https://github.com/adam-godel/glued-trees/tree/main/website) directory will contain the code for a web resource introducing the project, but it is currently unfinished and under active development.**
 
 ## Describing the Problem
 Consider a network of two mirrored binary trees connected to each other, where the outermost nodes of each tree are connected to two random nodes in the other tree. This structure will have $2n$ columns and $2^{n+1}-2$ nodes in total, as shown in the diagram below. Each node in the structure has a secret key in the form of a random bit string of size $2n$, and you can query a node using its key to get the keys of its neighbors. Your goal is, given the key of the entrance node, to find the key of the exit node as efficiently as possible.
