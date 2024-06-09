@@ -1,4 +1,0 @@
-[submodule "glued-trees-site"]
-	path = glued-trees-site
-	url = https://github.com/adam-godel/glued-trees-site.git
-	branch = main
