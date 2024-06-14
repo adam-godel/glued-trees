@@ -83,8 +83,8 @@ Since the speed of the entrance node oscillator $|\dot{x}_1(t)|$ is represented 
 The following graphs show the proportion of shots on the Classiq Aer simulator for the quantum state $|N-1\rangle$ representing the speed of the exit node oscillator $|\dot{x}_N(t)|$ for 10 qubits ($n=8, N=510$) and 20 qubits ($n=18, N=524286$) respectively. As a reminder, the expected behavior is a spike for most of these values around $t \approx 2n$, and you can clearly see a large spike on both of the graphs.
 
 <p align="center">
-<img src="figures/10_qubits.png" height="320">
-<img src="figures/20_qubits.png" height="320">
+<img src="figures/10_qubits.png" height="310">
+<img src="figures/20_qubits.png" height="310">
 </p>
 
 I am planning to run the algorithm for larger qubit sizes on quantum hardware and present those results in the next several weeks.
