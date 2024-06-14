@@ -22,7 +22,7 @@ There is a way to solve this problem efficiently however, on the order of the to
 I will now describe the technical aspects of this approach in further detail. To model the columns of the glued trees structure as a system of coupled harmonic oscillators, we consider a matrix $\mathbf{A}$ of size $N \times N$ corresponding to the nodes of the glued trees structure, such that $N=2^{n+1}-2$ and $n$ is the number of columns of one of the two glued trees. This matrix is defined as $\mathbf{A}=3(\mathbf{1}_N)-A$, where $A$ is the adjacency matrix of the glued trees system using any ordering.
 
 As an example, using a simple linear ordering of this adjacency matrix such that the entrance node is first and the exit node is last, this matrix will be defined as the following:
-$$
+```math
 \mathbf{A} = \begin{pmatrix}
 3 & -1 & -1 & 0 & \cdots & \cdots & \cdots & \cdots & 0 \\
 -1 & 3 & 0 & -1 & \cdots & \cdots & \cdots & \cdots & 0 \\
@@ -34,15 +34,15 @@ $$
 \vdots & \vdots & \vdots & \vdots & \vdots & -1 & 0 & 3 & -1 \\
 0 & 0 & 0 & 0 & \cdots & 0 & -1 & -1 & 3
 \end{pmatrix}
-$$
+```
 
 As shown in further detail in the paper, we can define a block Hamiltonian $\mathbf{H}$ such that
-$$
+```math
 \mathbf{H} := -\begin{pmatrix}
 \mathbf{0} & \mathbf{B} \\
 \mathbf{B}^† & \mathbf{0}
 \end{pmatrix}
-$$
+```
 where $\mathbf{B}$ is any $N \times M$ matrix such that $\mathbf{B}\mathbf{B}^†=\mathbf{A}$. However, to use this matrix $\mathbf{H}$ for Hamiltonian simulation, it must have a size corresponding to a power of two, while $\mathbf{A}$ is size $N \times N$. We can deal with this by ensuring that $\mathbf{B}$ is size $N \times (N+4)$, so the resulting Hamiltonian $\mathbf{H}$ is a square matrix with side length $2N+4 = 2(2^{n+1}-2)+4 = 2^{n+2}$. This means that a glued trees system with $n$ columns for one tree can be simulated using $n+2$ qubits.
 
 ## Creating a Quantum Circuit
@@ -60,7 +60,27 @@ The first algorithm can be found in the `generate_pauli_list` function contained
 The second algorithm is used for approximating Pauli lists too large to generate. It simply takes the current largest Pauli list generatable in reasonable time and pads it with its second character until the desired qubit size is reached. This approximation method is generally effective since most significant Pauli strings for the matrix contain a long substring of the same character beginning with the second character. Adding that same character and keeping the coefficient generally follows the trend present when comparing generated Pauli strings for different qubit sizes to each other.
 
 ## Results
-The following graphs show the proportion of shots on the Classiq Aer simulator for the 8 highest possible bitstrings for 10 qubits ($n=8, N=510$) and 20 qubits ($n=18, N=524286$) respectively. As a reminder, the expected behavior is a spike for most of these values around $t \approx 2n$, and you can clearly see a large spike on both of the graphs.
+Once we have assembled our block Hamiltonian $\mathbf{H}$, we can perform Hamiltonian simulation $e^{-it\mathbf{H}}$ using Classiq's [`exponentiation_with_depth_constraint`](https://docs.classiq.io/latest/explore/functions/qmod_library_reference/qmod_core_library/hamiltonian_evolution/exponentiation/exponentiation/) function. The resulting quantum state can be written as follows:
+```math
+\begin{aligned}
+|\psi(t)\rangle &\propto \begin{pmatrix}
+\dot{\vec{x}}(t) \\
+i\mathbf{B}^†\vec{x}(t) 
+\end{pmatrix} \\
+\begin{pmatrix}
+\dot{\vec{x}}(t) \\
+i\mathbf{B}^†\vec{x}(t) 
+\end{pmatrix} &= e^{-it\mathbf{H}} \begin{pmatrix}
+\dot{\vec{x}}(0) \\
+i\mathbf{B}^†\vec{x}(0) 
+\end{pmatrix}
+\end{aligned}
+```
+where $\vec{x}(0)=(0,0,\dots,0)^T$ and $\dot{\vec{x}}(0)=(1,0,\dots,0)^T$ using a linear ordering of nodes. 
+
+Since the speed of the entrance node oscillator $|\dot{x}_1(t)|$ is represented by the quantum state $|0\rangle$ and should have probability 1 at $t=0$, there is no specific state preparation necessary for this system. It should also be noted that since our matrix $\mathbf{B}^†$ is padded with 4 rows of zeroes, the highest 4 quantum states do not correspond to the displacement or speed of any oscillator. This means that the quantum state representing the speed of the exit node oscillator $|\dot{x}_N(t)|$, which is what we are most interested in, will correspond to $|N-1\rangle=|2^{n+1}-3\rangle$. We will be tracking this particular quantum state at time $t \approx 2n$ expecting a spike, which represents the system of oscillators "reaching" the exit node from the initial push to the entrance node.
+
+The following graphs show the proportion of shots on the Classiq Aer simulator for the quantum state $|N-1\rangle$ representing the speed of the exit node oscillator $|\dot{x}_N(t)|$ for 10 qubits ($n=8, N=510$) and 20 qubits ($n=18, N=524286$) respectively. As a reminder, the expected behavior is a spike for most of these values around $t \approx 2n$, and you can clearly see a large spike on both of the graphs.
 
 <p align="center">
 <img src="figures/10_qubits.png" height="320">
