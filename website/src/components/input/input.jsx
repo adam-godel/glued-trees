@@ -23,7 +23,7 @@ export default function Input({ neighbors }) {
             <ThemeProvider theme={theme}>
             <TextField 
                 id="input" 
-                label="Key"
+                label={disabled ? "Exit Key Found!" : "Key"}
                 helperText={result} 
                 variant="standard" 
                 onChange={(event) => setHelper(event.target.value.toUpperCase())}
@@ -32,6 +32,12 @@ export default function Input({ neighbors }) {
                     readOnly: disabled,
                     style: {
                         textTransform: 'uppercase',
+                        fontSize: 20,
+                    }
+                }}
+                InputLabelProps={{
+                    style: {
+                        fontSize: 20,
                     }
                 }}
             />

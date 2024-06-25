@@ -1,3 +1,24 @@
 .title {
-    height: 12rem;
+    height: 14rem;
+    margin: 0.5rem;
+}
+
+h1 {
+    color: #017100;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-top: 0.6rem;
+    margin-bottom: 0.6rem;
+}
+
+a {
+    color: #017100;
+    font-weight: bold;
+    text-decoration: solid;
+}
+
+a:hover {
+    color: #61D836;
 }
