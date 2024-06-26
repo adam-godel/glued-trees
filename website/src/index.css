@@ -16,3 +16,9 @@ html {
     width: 80%;
     background-color: #eee;
 }
+
+@media only screen and (orientation: portrait) {
+    body {
+        zoom: 35%;
+    }
+}
