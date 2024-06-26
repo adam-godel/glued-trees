@@ -1,4 +1,7 @@
-# Glued Trees
+<p align="center">
+<img src="https://raw.githubusercontent.com/adam-godel/glued-trees/main/figures/github_logo.svg" height="250">
+</p>
+---
 This repository contains the code for the quantum circuit implementation for the glued trees algorithm. You can view the algorithm along with an explanation of how it works in the Jupyter notebook attached. This README file is meant to introduce the problem and my implentation to people who already have experience with quantum computing. If you would like a more fundamental introduction, check out the Glued Trees website, [gluedtrees.com](https://gluedtrees.com/).
 
 I began working on this project as part of [QRISE 2024](https://github.com/adam-godel/qrise2024-classiq-challenge) for [Classiq](https://github.com/Classiq). I was selected as a winner of QRISE and the research exchange has since ended, but I continued to work on the algorithm and my implementation has become a part of the [Classiq library](https://github.com/Classiq/classiq-library/tree/main/algorithms/glued_trees). If you would like to learn more about me, feel free to access my website at [adamgodel.me](https://adamgodel.me/). You can also send me an email at agodel@bu.edu.
@@ -7,7 +10,7 @@ I began working on this project as part of [QRISE 2024](https://github.com/adam-
 Consider a network of two mirrored binary trees connected to each other, where the outermost nodes of each tree are connected to two random nodes in the other tree. This structure will have $2n$ columns and $2^{n+1}-2$ nodes in total, as shown in the diagram below. Each node in the structure has a secret key in the form of a random bit string of size $2n$, and you can query a node using its key to get the keys of its neighbors. Your goal is, given the key of the entrance node, to find the key of the exit node as efficiently as possible.
 
 <p align="center">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoHV_EgsCy3f3fid2P29Lyq00CQtPBiV9cc2A2oL6RoX0W3oawha617NRm7a6J9fdUPG7z55MuHKnko5eDCRZ4tb6mVvFQ-twhlL3EjLKDHKHDw0-69-0ESWovOsDTbkAfDBUwRiYa0U8rfHeGOB_JwfcWIXQyJYnfmRjI5E7ygfZz-l5w1N4Kisle8WeV/s16000/image2.png" height="400">
+<img src="https://raw.githubusercontent.com/adam-godel/glued-trees/main/figures/github_diagram.svg" height="400">
 </p>
 
 If you try to play this game yourself, or program an algorithm to do so, you'll quickly run into a major problem: since you don't know what specific nodes on the tree the interior keys correspond to, you will get lost within the structure once you reach the area between the two trees. There is no way to guarantee a solution to this problem—using a classical computer—that doesn't require you to check every node in the worst case.
