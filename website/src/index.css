@@ -17,7 +17,7 @@ html {
     background-color: #eee;
 }
 
-@media only screen and (orientation: portrait) {
+@media only screen and (max-width: 768px) {
     body {
         zoom: 35%;
     }
