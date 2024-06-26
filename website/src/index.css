@@ -22,6 +22,6 @@ html {
         zoom: 40%;
     }
     p, li {
-        font-size: 0.48rem;
+        font-size: 0.48rem !important;
     }
 }
