@@ -1,6 +1,6 @@
 import React from 'react'
 import './intro.css'
-import Diagram from '../../assets/diagram.svg'
+import Diagram from '../../assets/diagram.png'
 import 'katex/dist/katex.min.css'
 import Latex from 'react-latex-next'
 

@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://raw.githubusercontent.com/adam-godel/glued-trees/main/figures/github_logo.svg" height="250">
+<img src="https://raw.githubusercontent.com/adam-godel/glued-trees/main/figures/github_logo.png" height="250">
 </p>
 
 ---
@@ -12,7 +12,7 @@ I began working on this project as part of [QRISE 2024](https://github.com/adam-
 Consider a network of two mirrored binary trees connected to each other, where the outermost nodes of each tree are connected to two random nodes in the other tree. This structure will have $2n$ columns and $2^{n+1}-2$ nodes in total, as shown in the diagram below. Each node in the structure has a secret key in the form of a random bit string of size $2n$, and you can query a node using its key to get the keys of its neighbors. Your goal is, given the key of the entrance node, to find the key of the exit node as efficiently as possible.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/adam-godel/glued-trees/main/figures/github_diagram.svg" height="400">
+<img src="https://raw.githubusercontent.com/adam-godel/glued-trees/main/figures/github_diagram.png" height="400">
 </p>
 
 If you try to play this game yourself, or program an algorithm to do so, you'll quickly run into a major problem: since you don't know what specific nodes on the tree the interior keys correspond to, you will get lost within the structure once you reach the area between the two trees. There is no way to guarantee a solution to this problem—using a classical computer—that doesn't require you to check every node in the worst case.

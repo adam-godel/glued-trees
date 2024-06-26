@@ -1,6 +1,6 @@
 import React from 'react'
 import './title.css'
-import Logo from '../../assets/logo.svg'
+import Logo from '../../assets/logo.png'
 
 export default function Title() {
     return (
