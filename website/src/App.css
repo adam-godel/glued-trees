@@ -1,13 +1,8 @@
-.title {
-    height: 14rem;
-    margin: 0.5rem;
-}
-
-h1 {
+h1, h2 {
     color: #017100;
 }
 
-p {
+p, li {
     font-size: 1.2rem;
     margin-top: 0.6rem;
     margin-bottom: 0.6rem;
@@ -17,6 +12,7 @@ a {
     color: #017100;
     font-weight: bold;
     text-decoration: solid;
+    transition: color 0.15s;
 }
 
 a:hover {

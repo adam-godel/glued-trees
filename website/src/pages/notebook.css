@@ -1,0 +1,22 @@
+.code {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
+}
+
+img {
+    margin-top: 1rem;
+    height: 32rem;
+}
+
+b {
+    color: #017100
+}
+
+ul {
+    list-style: none;
+    text-align: left;
+    margin: -0.2rem 0;
+}

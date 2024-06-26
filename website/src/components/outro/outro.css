@@ -1,0 +1,17 @@
+button {
+    font-family: 'Hind';
+    font-weight: bold;
+    color: #fff;
+    background-color: #017100;
+    font-size: 2rem;
+    padding: 0.3rem 1rem;
+    padding-top: 0.5rem;
+    border-radius: 1.2rem;
+    border: 0;
+    transition: background-color 0.25s;
+}
+
+button:hover {
+    background-color: #61D836;
+    cursor: pointer;
+}
