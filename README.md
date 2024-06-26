@@ -1,7 +1,9 @@
 <p align="center">
 <img src="https://raw.githubusercontent.com/adam-godel/glued-trees/main/figures/github_logo.svg" height="250">
 </p>
+
 ---
+
 This repository contains the code for the quantum circuit implementation for the glued trees algorithm. You can view the algorithm along with an explanation of how it works in the Jupyter notebook attached. This README file is meant to introduce the problem and my implentation to people who already have experience with quantum computing. If you would like a more fundamental introduction, check out the Glued Trees website, [gluedtrees.com](https://gluedtrees.com/).
 
 I began working on this project as part of [QRISE 2024](https://github.com/adam-godel/qrise2024-classiq-challenge) for [Classiq](https://github.com/Classiq). I was selected as a winner of QRISE and the research exchange has since ended, but I continued to work on the algorithm and my implementation has become a part of the [Classiq library](https://github.com/Classiq/classiq-library/tree/main/algorithms/glued_trees). If you would like to learn more about me, feel free to access my website at [adamgodel.me](https://adamgodel.me/). You can also send me an email at agodel@bu.edu.
