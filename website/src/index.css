@@ -16,3 +16,12 @@ html {
     width: 80%;
     background-color: #eee;
 }
+
+@media screen and (orientation: portrait) {
+    html {
+        justify-content: flex-start;
+    }
+    * {
+        align-self: center;
+    }
+}
